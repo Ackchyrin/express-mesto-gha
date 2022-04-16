@@ -91,11 +91,11 @@ module.exports.updateUserInfo = (req, res, next) => {
   const { name, about } = req.body;
   Users.findByIdAndUpdate(req.user._id, { name, about }, { new: true, runValidators: true })
     .orFail(() => {
-      throw new BadRequestError('Переданы некорректные данные');
+      throw new ErrorNotFound('Переданы некорректные данные');
     })
     .then((user) => {
       if (!user) {
-        next(new BadRequestError('Переданы некорректные данные'));
+        next(new ErrorNotFound('Переданы некорректные данные'));
       }
       res.status(200).send({ data: user });
     })
@@ -111,11 +111,11 @@ module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
   Users.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
     .orFail(() => {
-      throw new BadRequestError('Переданы некорректные данные');
+      throw new ErrorNotFound('Переданы некорректные данные');
     })
     .then((user) => {
       if (!user) {
-        next(new BadRequestError('Переданы некорректные данные'));
+        next(new ErrorNotFound('Переданы некорректные данные'));
       }
       res.status(200).send({ data: user });
     })
