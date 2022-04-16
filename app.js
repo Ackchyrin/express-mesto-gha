@@ -29,7 +29,7 @@ app.use(auth);
 
 app.use(routerErrorWay);
 
-app.use(errorLoger);  
+app.use(errorLoger);
 
 app.use(errors());
 
