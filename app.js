@@ -25,13 +25,11 @@ app.post('/signin', loginValid, login);
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', { useNewUrlParser: true });
 
-app.use('/cards', require('./routes/cards'));
-
-app.use(errorLoger);
-
 app.use(auth);
 
 app.use(routerErrorWay);
+
+app.use(errorLoger);  
 
 app.use(errors());
 
